@@ -2,29 +2,33 @@ const { Component } = require('react');
 const { default: TodoList } = require('./TodoList');
 
 class TodoContainer extends Component {
-	state = {
-	  todos: [
-	    {
-	      id: 1,
-	      title: 'Setup development environment',
-	      completed: true,
-	    },
-	    {
-	      id: 2,
-	      title: 'Develop website and add content',
-	      completed: false,
-	    },
-	    {
-	      id: 3,
-	      title: 'Deploy to live server',
-	      completed: false,
-	    },
-	  ],
-	};
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: [
+        {
+          id: 1,
+          title: 'Setup development environment',
+          completed: true,
+        },
+        {
+          id: 2,
+          title: 'Develop website and add content',
+          completed: false,
+        },
+        {
+          id: 3,
+          title: 'Deploy to live server',
+          completed: false,
+        },
+      ],
+    };
+  }
 
-	render() {
-	  return <TodoList todos={this.state.todos} />;
-	}
+  render() {
+    const { todos } = this.state;
+    return <TodoList todos={todos} />;
+  }
 }
 
 export default TodoContainer;

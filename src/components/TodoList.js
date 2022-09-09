@@ -1,18 +1,20 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
+import TodoItem from './TodoItem';
 
-class TodoList extends Component {
+class TodoList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      todos: props.todos,
+      tasks: this.props,
     };
   }
 
   render() {
+    const { tasks } = this.state;
     return (
       <ul>
-        {this.todos.map((todo) => (
-          <li key={todo.id}>{todo.title}</li>
+        {tasks.todos.map((todo) => (
+          <TodoItem key={todo.id} todo={todo.title} />
         ))}
       </ul>
     );
