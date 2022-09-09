@@ -1,3 +1,7 @@
+/** @format */
+
+import Header from './Header';
+
 const { Component } = require('react');
 const { default: TodoList } = require('./TodoList');
 
@@ -27,7 +31,12 @@ class TodoContainer extends Component {
 
   render() {
     const { todos } = this.state;
-    return <TodoList todos={todos} />;
+    return (
+      <>
+        <Header />
+        <TodoList todos={todos} />
+      </>
+    );
   }
 }
 
