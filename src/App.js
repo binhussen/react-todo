@@ -4,7 +4,7 @@ import TodoContainer from './components/TodoContainer';
 import React from 'react';
 
 function App() {
-  return <TodoContainer />
+  return <TodoContainer />;
 }
 
 export default App;

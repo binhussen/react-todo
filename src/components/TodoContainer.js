@@ -1,4 +1,5 @@
 const { Component } = require('react');
+const { default: TodoList } = require('./TodoList');
 
 class TodoContainer extends Component {
 	state = {
@@ -22,13 +23,7 @@ class TodoContainer extends Component {
 	};
 
 	render() {
-	  return (
-  <ul>
-    {this.state.todos.map((todo) => (
-      <li key={todo.id}>{todo.title}</li>
-    ))}
-  </ul>
-	  );
+	  return <TodoList todos={this.state.todos} />;
 	}
 }
 
