@@ -1,6 +1,7 @@
 /** @format */
 
 import Header from './Header';
+import InputTodo from './InputTodo';
 
 const { Component } = require('react');
 const { default: TodoList } = require('./TodoList');
@@ -43,15 +44,27 @@ class TodoContainer extends Component {
    }));
  };
 
- render() {
-   const { todos } = this.state;
-   return (
-     <>
-       <Header />
-       <TodoList todos={todos} handleClick={this.handleClick} />
-     </>
-   );
- }
+  addTodoItem = (title) => {
+    const newTodo = {
+      id: 4,
+      title,
+      completed: false,
+    };
+    this.setState((prevState) => ({
+      todos: [...prevState.todos, newTodo],
+    }));
+  };
+
+  render() {
+    const { todos } = this.state;
+    return (
+      <>
+        <Header />
+        <InputTodo addTodoItem={this.addTodoItem} />
+        <TodoList todos={todos} handleClick={this.handleClick} />
+      </>
+    );
+  }
 }
 
 export default TodoContainer;
