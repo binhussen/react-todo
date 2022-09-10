@@ -29,23 +29,41 @@ class TodoContainer extends Component {
         },
       ],
     };
+    this.handleClick = this.handleClick.bind(this);
+    this.addItem = this.addItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
+    this.setUpdate = this.setUpdate.bind(this);
   }
 
- handleClick = (id) => {
-   this.setState((prevState) => ({
-     todos: prevState.todos.map((todo) => {
-       if (todo.id === id) {
-         return {
-           ...todo,
-           completed: !todo.completed,
-         };
-       }
-       return todo;
-     }),
-   }));
- };
+  handleClick(id) {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      }),
+    }));
+  }
 
-  addItem = (title) => {
+  setUpdate(updatedTitle, id) {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            title: updatedTitle,
+          };
+        }
+        return todo;
+      }),
+    }));
+  }
+
+  addItem(title) {
     const newTodo = {
       id: uuidv4(),
       title,
@@ -54,13 +72,13 @@ class TodoContainer extends Component {
     this.setState((prevState) => ({
       todos: [...prevState.todos, newTodo],
     }));
-  };
+  }
 
-  deleteItem = (id) => {
+  deleteItem(id) {
     this.setState((prevState) => ({
-      todos: prevState.todos.filter((todo) => (todo.id !== id)),
+      todos: prevState.todos.filter((todo) => todo.id !== id),
     }));
-  };
+  }
 
   render() {
     const { todos } = this.state;
@@ -73,6 +91,7 @@ class TodoContainer extends Component {
             todos={todos}
             handleClick={this.handleClick}
             handleDelete={this.deleteItem}
+            setUpdate={this.setUpdate}
           />
         </div>
       </div>
