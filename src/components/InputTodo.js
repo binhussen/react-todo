@@ -16,15 +16,17 @@ const InputTodo = ({ addTodoItem }) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-container">
       <input
+        className="input-text"
+        name="title"
         type="text"
         placeholder="Add todo..."
         value={title}
         onChange={onChange}
         required
       />
-      <button type="submit">Submit</button>
+      <button className="input-submit" type="submit">Submit</button>
     </form>
   );
 };
