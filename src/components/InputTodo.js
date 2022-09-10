@@ -10,7 +10,10 @@ const InputTodo = ({ addTodoItem }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTodoItem(title);
+    if (title.trim()) {
+      addTodoItem(title);
+      setTitle('');
+    }
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -19,6 +22,7 @@ const InputTodo = ({ addTodoItem }) => {
         placeholder="Add todo..."
         value={title}
         onChange={onChange}
+        required
       />
       <button type="submit">Submit</button>
     </form>
