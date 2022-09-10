@@ -29,15 +29,29 @@ class TodoContainer extends Component {
     };
   }
 
-  render() {
-    const { todos } = this.state;
-    return (
-      <>
-        <Header />
-        <TodoList todos={todos} />
-      </>
-    );
-  }
+ handleClick = (id) => {
+   this.setState((prevState) => ({
+     todos: prevState.todos.map((todo) => {
+       if (todo.id === id) {
+         return {
+           ...todo,
+           completed: !todo.completed,
+         };
+       }
+       return todo;
+     }),
+   }));
+ };
+
+ render() {
+   const { todos } = this.state;
+   return (
+     <>
+       <Header />
+       <TodoList todos={todos} handleClick={this.handleClick} />
+     </>
+   );
+ }
 }
 
 export default TodoContainer;
