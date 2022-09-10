@@ -1,5 +1,5 @@
 // eslint-disable-next-line react/prop-types
-const TodoItem = ({ todo, handleClick }) => {
+const TodoItem = ({ todo, handleClick, handleDelete }) => {
   // eslint-disable-next-line react/prop-types
   const { id, title, completed } = todo;
   return (
@@ -10,6 +10,7 @@ const TodoItem = ({ todo, handleClick }) => {
         onChange={() => handleClick(id)}
       />
       {title}
+      <button type="button" onClick={() => handleDelete(id)}>Delete</button>
     </li>
   );
 };

@@ -45,7 +45,7 @@ class TodoContainer extends Component {
    }));
  };
 
-  addTodoItem = (title) => {
+  addItem = (title) => {
     const newTodo = {
       id: uuidv4(),
       title,
@@ -56,13 +56,19 @@ class TodoContainer extends Component {
     }));
   };
 
+  deleteItem = (id) => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.filter((todo) => (todo.id !== id)),
+    }));
+  };
+
   render() {
     const { todos } = this.state;
     return (
       <>
         <Header />
-        <InputTodo addTodoItem={this.addTodoItem} />
-        <TodoList todos={todos} handleClick={this.handleClick} />
+        <InputTodo addTodoItem={this.addItem} />
+        <TodoList todos={todos} handleClick={this.handleClick} handleDelete={this.deleteItem} />
       </>
     );
   }

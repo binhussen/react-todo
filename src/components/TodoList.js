@@ -4,7 +4,7 @@ import TodoItem from './TodoItem';
 
 class TodoList extends PureComponent {
   render() {
-    const { todos, handleClick } = this.props;
+    const { todos, handleClick, handleDelete } = this.props;
     return (
       <ul>
         {todos.map((todo) => (
@@ -12,6 +12,7 @@ class TodoList extends PureComponent {
             key={todo.id}
             todo={todo}
             handleClick={handleClick}
+            handleDelete={handleDelete}
           />
         ))}
       </ul>
