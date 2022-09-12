@@ -5,6 +5,8 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './Header';
 import InputTodo from './InputTodo';
 import Navbar from './Navbar';
+import About from '../pages/About';
+import NotMatch from '../pages/NotMatch';
 
 const { Component } = require('react');
 const { default: TodoList } = require('./TodoList');
@@ -112,8 +114,8 @@ class TodoContainer extends Component {
               </div>
           )}
           />
-          <Route path="/about" element={<h1>about</h1>} />
-          <Route path="*" element={<h1>NotMatch</h1>} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotMatch />} />
         </Routes>
       </>
     );
