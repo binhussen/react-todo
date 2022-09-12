@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Route, Routes } from 'react-router-dom';
 import Header from './Header';
 import InputTodo from './InputTodo';
+import Navbar from './Navbar';
 
 const { Component } = require('react');
 const { default: TodoList } = require('./TodoList');
@@ -91,6 +92,7 @@ class TodoContainer extends Component {
     const { todos } = this.state;
     return (
       <>
+        <Navbar />
         <Routes>
           <Route
             path="/"
