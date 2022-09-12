@@ -1,6 +1,7 @@
 /** @format */
 
 import { v4 as uuidv4 } from 'uuid';
+import { Route, Routes } from 'react-router-dom';
 import Header from './Header';
 import InputTodo from './InputTodo';
 
@@ -89,18 +90,30 @@ class TodoContainer extends Component {
   render() {
     const { todos } = this.state;
     return (
-      <div className="container">
-        <div className="inner">
-          <Header />
-          <InputTodo addTodoItem={this.addItem} />
-          <TodoList
-            todos={todos}
-            handleClick={this.handleClick}
-            handleDelete={this.deleteItem}
-            setUpdate={this.setUpdate}
+      <>
+        <Routes>
+          <Route
+            path="/"
+            exact
+            element={(
+              <div className="container">
+                <div className="inner">
+                  <Header />
+                  <InputTodo addTodoItem={this.addItem} />
+                  <TodoList
+                    todos={todos}
+                    handleClick={this.handleClick}
+                    handleDelete={this.deleteItem}
+                    setUpdate={this.setUpdate}
+                  />
+                </div>
+              </div>
+          )}
           />
-        </div>
-      </div>
+          <Route path="/about" element={<h1>about</h1>} />
+          <Route path="*" element={<h1>NotMatch</h1>} />
+        </Routes>
+      </>
     );
   }
 }
