@@ -36,21 +36,17 @@ const TodoItem = ({
 
   return (
     <li className={style.item}>
-      <input
-        type="checkbox"
-        className={style.checkbox}
-        checked={completed}
-        onChange={() => handleClick(id)}
-      />
-      <button type="button" onClick={() => handleDelete(id)}>
-        Delete
-      </button>
-      <span style={completed ? completedStyle : null}>{title}</span>
-      <div
-        onDoubleClick={handleEditing}
-        style={viewMode}
-      >
-        ...
+      <div onDoubleClick={handleEditing} style={viewMode}>
+        <input
+          type="checkbox"
+          className={style.checkbox}
+          checked={completed}
+          onChange={() => handleClick(id)}
+        />
+        <button type="button" onClick={() => handleDelete(id)}>
+          Delete
+        </button>
+        <span style={completed ? completedStyle : null}>{title}</span>
       </div>
       <input
         type="text"
