@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaPlusCircle } from 'react-icons/fa';
 
 // eslint-disable-next-line react/prop-types
 const InputTodo = ({ addTodoItem }) => {
@@ -26,7 +27,11 @@ const InputTodo = ({ addTodoItem }) => {
         onChange={onChange}
         required
       />
-      <button className="input-submit" type="submit">Submit</button>
+      <button className="input-submit" type="submit">
+        <FaPlusCircle
+          style={{ color: 'darkcyan', fontSize: '20px', marginTop: '2px' }}
+        />
+      </button>
     </form>
   );
 };
